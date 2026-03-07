@@ -16,9 +16,13 @@ status:
 role: PhD student in Mathematics
 bio: |
   I'm a PhD student in Mathematics at Univesity of Brasília under the 
-  supervision of Pavel Zalesskii. I work in group theory and my main
-  research interests lies in profinite groups, especially combinatorial
-  theory for profinite and pro-p groups and p-adic analytic groups.
+  supervision of Pavel Zalesskii. I am Bsc (2023) and MSc (2026) in 
+  Mathematics by Universiy of Brasília. My master's advisor was Theo
+  Zapata. I work in group theory and my main research interests lies
+  in profinite groups, especially combinatorial theory for profinite 
+  and pro-p groups and p-adic analytic groups.
+
+  
 
 affiliations:
   - name: Universidade de Brasília
@@ -43,21 +47,22 @@ interests:
   - Residually finite groups
 
 education:
-  - degree: PhD in Mathematics
+  - degree: PhD in Mathematics (ongoing)
     institution: Universidade de Brasília
-    start: January 2026
+    start: 2026
   - degree: MSc in Mathematics
     institution: Universidade de Brasília
-    start: March 2024
-    end: January 2026
+    start: 2024
+    end: 2026
+    summary: 'Thesis: *Grupos analíticos p-ádicos de dimensões pequenas*. Advisor: Theo Zapata.'
     button:
-      text: Download dissertation (in portugueses)
+      text: Download thesis (in portuguese)
       url: /resume.pdf
       icon: hero/arrow-down-tray
   - degree: BSc in Mathematics
     institution: Universidade de Brasília
-    start: July 2021
-    end: December 2023
+    start: 2021
+    end: 2023
 
 languages:
   - name: Portuguese
