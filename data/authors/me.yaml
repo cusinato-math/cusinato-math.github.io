@@ -2,7 +2,7 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: M.Sc. Pedro Cusinato
+  display: MSc. Pedro Cusinato
   given: Pedro
   family: Cusinato
   alternate: ''  # Example: 王伟
@@ -34,30 +34,27 @@ links:
     url: www.linkedin.com/in/pedro-cusinato
 
 interests:
-  - Large Language Models
-  - Computer Vision
-  - Reinforcement Learning
-  - AI Ethics
+  - Profinite groups
+  - Combinatorial group theory
+  - p-adic analytic groups
+  - Residually finite groups
 
 education:
-  - degree: PhD Computer Science
-    institution: Stanford University
-    start: 2015-09-01
-    end: 2019-06-30
-    summary: |
-      Thesis on scaling laws for neural language models. Published 5 papers in NeurIPS and ICML.
+  - degree: PhD in Mathematics
+    institution: Universidade de Brasília
+    start: January 2026
+  - degree: MSc in Mathematics
+    institution: Universidade de Brasília
+    start: March 2024
+    end: January 2026
     button:
-      text: Download dissertation
+      text: Download dissertation (in portugueses)
       url: /resume.pdf
       icon: hero/arrow-down-tray
-  - degree: MS Computer Science
-    institution: Carnegie Mellon University
-    start: 2013-09-01
-    end: 2015-05-31
-  - degree: BS Computer Science
-    institution: MIT
-    start: 2009-09-01
-    end: 2013-05-31
+  - degree: BSc in Mathematics
+    institution: Universidade de Brasília
+    start: July 2021
+    end: December 2023
 
 experience:
   - role: Senior AI Research Scientist
