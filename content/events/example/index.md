@@ -1,21 +1,21 @@
 ---
-title: "Create Beautiful Presentations with Markdown"
-date: '2017-01-01T00:00:00Z'
+title: "Analytic pro-p groups of dimension four"
+date: '2025-06-27'
 
-event_name: HugoBlox Showcase
-event_url: https://hugoblox.com
+event_name: seminario_de_algebra2025
+event_url:
 
-location: Online & In-Person
+location: In-Person
 address:
-  street: 450 Serra Mall
-  city: Stanford
-  region: CA
-  postcode: '94305'
-  country: United States
+  street: Universidade de Brasília
+  city: Brasília
+  country: Brazil
 
 summary: Discover how to create stunning, interactive presentations using simple Markdown — no PowerPoint, Keynote, or vendor lock-in required.
 abstract: |
-  Join us to explore HugoBlox's revolutionary Markdown-based slide system. Create beautiful presentations with code syntax highlighting, math equations, animations, and dual-column layouts. Edit your slides in any text editor, version control them with Git, and present them anywhere with just a browser. Experience true presentation freedom.
+  A topological group is said to be p-adic analytic if it admits a p-adic manifold structure such that the group operations are analytic. French mathematician Michel Lazard introduced the class of saturable groups and showed that a topological group is p-adic analytic if and only if it has an open subgroup that is saturable.
+  Gonzalez-Sanchez and Klopsch have shown that every torsion-free p-adic analytic group of dimension less than p is saturable. With this result in hands, they've exhibited group presentations for all torsion-free solvable analytic pro-p groups of dimension at most three (for p greater than 3). With similar techniques, Noseda and Snopce did the analogue for non-solvable torsion-free analytic pro-p groups of dimension 3.
+  By calculating derivations in the associated Lie lattices, we've exhibited group presentations for all torsion-free analytic pro-p groups of dimension 4 for p greater than 3. We've also determined which of those groups have the CA property. 
 
 # Talk start and end times.
 event_start: '2030-06-01T13:00:00Z'
