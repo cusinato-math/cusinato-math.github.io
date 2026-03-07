@@ -48,11 +48,12 @@ education:
   - degree: PhD in Mathematics (ongoing)
     institution: Universidade de Brasília
     start: 2026
+    summary: 'Advisor: [Pavel Zalesskii](https://mat.unb.br/~pz/index.html).'
   - degree: MSc in Mathematics
     institution: Universidade de Brasília
     start: 2024
     end: 2026
-    summary: 'Thesis: *Grupos analíticos p-ádicos de dimensões pequenas*. Advisor: Theo Zapata.'
+    summary: 'Thesis: *Grupos analíticos p-ádicos de dimensões pequenas*. Advisor: [Theo Zapata](https://mat.unb.br/zapata/).'
     button:
       text: Download thesis (in portuguese)
       url: /resume.pdf
