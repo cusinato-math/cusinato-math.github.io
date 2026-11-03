@@ -3,7 +3,8 @@
 title: ''
 summary: ''
 date: 2022-10-24
-type: landing
+type: editorial
+layout: editorial
 
 design:
   # Default section spacing
