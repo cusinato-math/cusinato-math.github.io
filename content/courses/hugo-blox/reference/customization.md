@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Customizing Hugo
 linkTitle: Customization
 weight: 1

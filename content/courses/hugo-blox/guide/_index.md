@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Guide
 weight: 2
 sidebar:
