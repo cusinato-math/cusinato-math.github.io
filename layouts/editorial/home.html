@@ -1,0 +1,235 @@
+{{- $profile := site.Data.authors.me -}}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f4">
+  <meta name="description" content="Pedro Cusinato — PhD student in Mathematics at the University of Brasília. Research in profinite groups and group theory.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pedro Cusinato — Mathematics">
+  <meta property="og:description" content="Research, papers, talks and academic experience of Pedro Cusinato.">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <title>Pedro Cusinato — Mathematics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "css/editorial.css" | relURL }}">
+  <script>
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('pc-theme'); } catch (e) {}
+      var preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', choice === 'dark' || choice === 'light' ? choice : preferred);
+    })();
+  </script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], processEscapes: true },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script defer src="{{ "js/editorial.js" | relURL }}"></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="masthead">
+        <a class="brand" href="#top" aria-label="Pedro Cusinato, back to top">P. CUSINATO<span class="brand-dot">.</span></a>
+        <span class="masthead-caption">MATHEMATICS / BRASÍLIA</span>
+      </div>
+      <div class="header-rule" aria-hidden="true"></div>
+      <div class="navigation-row">
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#bio" data-section-link class="is-active"><span class="nav-number">01 /</span> BIO</a>
+          <a href="#papers" data-section-link><span class="nav-number">02 /</span> PAPERS</a>
+          <a href="#talks" data-section-link><span class="nav-number">03 /</span> TALKS</a>
+          <a href="#experience" data-section-link><span class="nav-number">04 /</span> EXPERIENCE</a>
+        </nav>
+        <button type="button" class="theme-toggle" aria-label="Switch color theme" aria-pressed="false">
+          <span class="theme-symbol" aria-hidden="true">◐</span><span class="theme-label">THEME</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section id="bio" class="section bio-section" aria-labelledby="bio-title">
+      <div class="section-header bio-section-header">
+        <span class="section-index">01 / BIOGRAPHY</span>
+        <span class="section-aside">ABOUT &amp; RESEARCH</span>
+      </div>
+      <div class="bio-grid">
+        <div class="portrait-column">
+          {{- with resources.Get "media/authors/me.png" -}}
+            <img class="portrait" src="{{ .RelPermalink }}" alt="Portrait of Pedro Cusinato" width="{{ .Width }}" height="{{ .Height }}" fetchpriority="high">
+          {{- else -}}
+            <div class="portrait portrait-placeholder" role="img" aria-label="Portrait unavailable">PC.</div>
+          {{- end -}}
+          <span class="photo-caption">PEDRO CUSINATO / UNB</span>
+        </div>
+        <div class="bio-information">
+          <p class="eyebrow">MATHEMATICS · UNIVERSITY OF BRASÍLIA</p>
+          <h1 id="bio-title">{{ $profile.name.given }} {{ $profile.name.family }}<span class="red-period">.</span></h1>
+          <p class="role">{{ $profile.role }}</p>
+          <div class="bio-divider"></div>
+          <div class="bio-copy">{{ $profile.bio | markdownify }}</div>
+          <div class="interest-panel">
+            <h2 class="minor-heading">RESEARCH INTERESTS</h2>
+            <ul class="interest-list">
+              {{- range $profile.interests -}}
+              <li>{{ . }}</li>
+              {{- end -}}
+            </ul>
+          </div>
+          <div class="profile-links" aria-label="Academic and contact links">
+            {{- range $profile.links -}}
+              {{- $label := .label -}}
+              {{- if not $label -}}
+                {{- if in .url "github.com" -}}{{- $label = "GitHub" -}}
+                {{- else if in .url "linkedin.com" -}}{{- $label = "LinkedIn" -}}
+                {{- else if in .url "lattes.cnpq.br" -}}{{- $label = "Lattes" -}}
+                {{- else -}}{{- $label = "Profile" -}}{{- end -}}
+              {{- end -}}
+              <a href="{{ .url }}"{{ if not (hasPrefix .url "mailto:") }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ $label }}<span aria-hidden="true"> ↗</span></a>
+            {{- end -}}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="papers" class="section listing-section" aria-labelledby="papers-title">
+      <div class="section-header">
+        <h2 id="papers-title"><span class="section-index">02 /</span> Papers</h2>
+        <span class="section-aside">PUBLICATIONS</span>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+      {{- $papers := where site.RegularPages "Section" "publications" -}}
+      {{- with $papers -}}
+      <ol class="entry-list paper-list">
+        {{- range $index, $paper := .ByDate.Reverse -}}
+        <li class="entry">
+          <span class="entry-index">{{ printf "%02d" (add $index 1) }}</span>
+          <div class="entry-content">
+            <h3 class="entry-title">{{ $paper.Title }}</h3>
+            <p class="entry-meta">
+              {{- range $index, $author := $paper.Params.authors -}}{{ if $index }}, {{ end }}{{ if eq $author "me" }}Pedro Cusinato{{ else }}{{ $author }}{{ end }}{{- end -}}
+              <span class="meta-separator">·</span> {{ $paper.Date.Format "2006" }}
+              {{- with $paper.Params.publication_short }}<span class="meta-separator">·</span> {{ . }}{{ else }}{{ with $paper.Params.publication }}<span class="meta-separator">·</span> {{ . | plainify }}{{ end }}{{ end -}}
+            </p>
+          </div>
+          <div class="entry-links">
+            {{- with $paper.Params.hugoblox.ids.arxiv -}}
+            <a href="https://arxiv.org/abs/{{ . }}" target="_blank" rel="noopener noreferrer">arXiv <span aria-hidden="true">↗</span></a>
+            <a href="https://arxiv.org/pdf/{{ . }}" target="_blank" rel="noopener noreferrer">PDF <span aria-hidden="true">↗</span></a>
+            {{- else -}}
+              {{- range $paper.Params.links -}}
+                {{- if and .url (or (eq .type "pdf") (eq .type "preprint")) -}}
+                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .type | upper }} <span aria-hidden="true">↗</span></a>
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          </div>
+        </li>
+        {{- end -}}
+      </ol>
+      {{- else -}}
+      <p class="empty-state">Publications will appear here.</p>
+      {{- end -}}
+    </section>
+
+    <section id="talks" class="section listing-section" aria-labelledby="talks-title">
+      <div class="section-header">
+        <h2 id="talks-title"><span class="section-index">03 /</span> Talks</h2>
+        <span class="section-aside">SEMINARS &amp; EVENTS</span>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+      <ol class="entry-list talk-list">
+        {{- range $index, $talk := site.Data.talks -}}
+        <li class="entry">
+          <span class="entry-index">{{ printf "%02d" (add $index 1) }}</span>
+          <div class="entry-content">
+            <h3 class="entry-title">{{ $talk.title }}</h3>
+            <p class="entry-meta">{{ $talk.event }} <span class="meta-separator">·</span> {{ $talk.date }}{{ with $talk.time }}, {{ . }}{{ end }}</p>
+            <p class="entry-detail">{{ $talk.format }} <span class="meta-separator">/</span> {{ $talk.language }}</p>
+          </div>
+          <div class="entry-links">
+            {{- with $talk.announcement -}}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Notice <span aria-hidden="true">↗</span></a>
+            {{- end -}}
+            {{- with $talk.poster -}}
+              {{- if fileExists (printf "static%s" .) -}}
+              <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">Poster PDF <span aria-hidden="true">↗</span></a>
+              {{- end -}}
+            {{- end -}}
+          </div>
+        </li>
+        {{- end -}}
+      </ol>
+    </section>
+
+    <section id="experience" class="section experience-section" aria-labelledby="experience-title">
+      <div class="section-header">
+        <h2 id="experience-title"><span class="section-index">04 /</span> Experience</h2>
+        <span class="section-aside">ACADEMIC RECORD</span>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+      <div class="experience-group">
+        <h3 class="experience-category">EDUCATION</h3>
+        <div class="experience-items">
+          {{- range $profile.education -}}
+          <div class="experience-item">
+            <div class="experience-item-head">
+              <h4>{{ .degree }}</h4>
+              <span class="experience-years">{{ .start }}{{ with .end }} — {{ . }}{{ else }} — Present{{ end }}</span>
+            </div>
+            <p class="experience-institution">{{ .institution }}</p>
+            {{- with .summary -}}<div class="experience-summary">{{ . | markdownify }}</div>{{- end -}}
+          </div>
+          {{- end -}}
+        </div>
+      </div>
+      <div class="experience-group">
+        <h3 class="experience-category">RESEARCH</h3>
+        <div class="experience-items">
+          <div class="experience-item">
+            <div class="experience-item-head">
+              <h4>Group theory</h4>
+              <span class="experience-years">Current research</span>
+            </div>
+            <p class="experience-institution">Universidade de Brasília</p>
+            <p class="experience-summary">{{ delimit $profile.interests " · " }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="experience-group">
+        <h3 class="experience-category">TEACHING</h3>
+        <div class="experience-items">
+          {{- range $profile.experience -}}
+          <div class="experience-item">
+            <div class="experience-item-head">
+              <h4>{{ .role }}</h4>
+              <span class="experience-years">{{ .start }}{{ with .end }} — {{ . }}{{ else }} — Present{{ end }}</span>
+            </div>
+            <p class="experience-institution">{{ .org }}</p>
+            {{- with .summary -}}<div class="experience-summary">{{ . | markdownify }}</div>{{- end -}}
+          </div>
+          {{- end -}}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>© {{ now.Year }} PEDRO CUSINATO</span>
+      <span>UNIVERSIDADE DE BRASÍLIA / MATHEMATICS</span>
+      <a href="#top">BACK TO TOP ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
