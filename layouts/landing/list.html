@@ -49,6 +49,7 @@
           <a href="#papers" data-section-link><span class="nav-number">02 /</span> PAPERS</a>
           <a href="#talks" data-section-link><span class="nav-number">03 /</span> TALKS</a>
           <a href="#experience" data-section-link><span class="nav-number">04 /</span> EXPERIENCE</a>
+          <a href="#photos" data-section-link><span class="nav-number">05 /</span> PHOTOS</a>
         </nav>
         <button type="button" class="theme-toggle" aria-label="Switch color theme" aria-pressed="false">
           <span class="theme-symbol" aria-hidden="true">◐</span><span class="theme-label">THEME</span>
@@ -225,6 +226,27 @@
           </div>
           {{- end -}}
         </div>
+      </div>
+    </section>
+
+    <section id="photos" class="section photos-section" aria-labelledby="photos-title">
+      <div class="section-header">
+        <h2 id="photos-title"><span class="section-index">05 /</span> Photos</h2>
+        <span class="section-aside">ACADEMIC MOMENTS</span>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+      <div class="photos-grid">
+        {{- range $index, $photo := site.Data.photos -}}
+        <figure class="photo-item">
+          <a class="photo-link" href="{{ $photo.src | relURL }}" target="_blank" rel="noopener noreferrer" aria-label="View photo: {{ $photo.caption }}">
+            <img src="{{ $photo.src | relURL }}" alt="{{ $photo.alt }}" loading="lazy" decoding="async">
+          </a>
+          <figcaption class="photo-caption-line">
+            <span class="photo-caption-index">{{ printf "%02d" (add $index 1) }}</span>
+            <p class="photo-caption-text">{{ $photo.caption }}</p>
+          </figcaption>
+        </figure>
+        {{- end -}}
       </div>
     </section>
   </main>

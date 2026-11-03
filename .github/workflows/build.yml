@@ -112,6 +112,23 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-hugo-resources-
 
+    - name: Prepare gallery images
+      run: |
+        mkdir -p static/photos
+        cp 'Foto de Pedro.jpg' static/photos/algebra-school-2026.jpg
+        python -m pip install --user --disable-pip-version-check pillow pillow-heif
+        python - <<'PY'
+        from PIL import Image
+        from pillow_heif import register_heif_opener
+        register_heif_opener()
+        image = Image.open("20260105_162422.heic")
+        image = image.convert("RGB")
+        image.save("static/photos/masters-defense-2026.jpg", "JPEG", quality=87, optimize=True)
+        print("Converted defense photo:", image.size)
+        PY
+        test -s static/photos/algebra-school-2026.jpg
+        test -s static/photos/masters-defense-2026.jpg
+
     - name: Build with Hugo
       env:
         HUGO_ENVIRONMENT: production
@@ -129,6 +146,9 @@ jobs:
         grep -q 'P. CUSINATO' public/index.html
         grep -q 'editorial.css' public/index.html
         grep -q 'id=experience\|id="experience"' public/index.html
+        grep -q 'id=photos\|id="photos"' public/index.html
+        test -s public/photos/algebra-school-2026.jpg
+        test -s public/photos/masters-defense-2026.jpg
 
     - name: Generate Pagefind search index (if applicable)
       run: |
