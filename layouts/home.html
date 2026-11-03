@@ -6,13 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="Pedro Cusinato — PhD student in Mathematics at the University of Brasília. Research in profinite groups and group theory.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  {{- with site.Params.hugoblox.verification.google }}
+  <meta name="google-site-verification" content="{{ . }}">
+  {{- end }}
+  <meta name="description" content="Pedro Cusinato is a PhD student in Mathematics at the University of Brasília, researching profinite groups, pro-p groups, and p-adic analytic groups.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Pedro Cusinato — Mathematics">
-  <meta property="og:description" content="Research, papers, talks and academic experience of Pedro Cusinato.">
+  <meta property="og:description" content="Pedro Cusinato is a PhD student in Mathematics at the University of Brasília, researching profinite groups, pro-p groups, and p-adic analytic groups.">
+  <meta property="og:site_name" content="Pedro Cusinato">
+  <meta property="og:locale" content="en_US">
+  {{- with resources.Get "media/authors/me.png" }}
+  <meta property="og:image" content="{{ .Permalink }}">
+  <meta name="twitter:image" content="{{ .Permalink }}">
+  {{- end }}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pedro Cusinato — Mathematics | University of Brasília">
+  <meta name="twitter:description" content="Pedro Cusinato is a PhD student in Mathematics at the University of Brasília, researching profinite groups, pro-p groups, and p-adic analytic groups.">
   <meta property="og:url" content="{{ .Permalink }}">
   <link rel="canonical" href="{{ .Permalink }}">
-  <title>Pedro Cusinato — Mathematics</title>
+  <title>Pedro Cusinato — Mathematics | University of Brasília</title>
+  {{- $profileUrl := .Permalink -}}
+  {{- $person := dict "@type" "Person" "@id" (printf "%s#person" $profileUrl) "name" "Pedro Cusinato" "givenName" "Pedro" "familyName" "Cusinato" "url" $profileUrl "description" "Pedro Cusinato is a PhD student in Mathematics at the University of Brasília, researching profinite groups, pro-p groups, and p-adic analytic groups." "jobTitle" "PhD student in Mathematics" "affiliation" (dict "@type" "CollegeOrUniversity" "name" "Universidade de Brasília" "url" "https://www.unb.br/") "knowsAbout" (slice "Profinite groups" "Pro-p groups" "Combinatorial group theory" "p-adic analytic groups") "sameAs" (slice "https://github.com/cusinato-math" "https://linkedin.com/in/pedro-cusinato" "https://lattes.cnpq.br/8931300517166648") -}}
+  {{- with resources.Get "media/authors/me.png" -}}
+    {{- $person = merge $person (dict "image" .Permalink) -}}
+  {{- end -}}
+  {{- $schema := dict "@context" "https://schema.org" "@type" "ProfilePage" "@id" (printf "%s#profile" $profileUrl) "url" $profileUrl "name" "Pedro Cusinato — Mathematics | University of Brasília" "mainEntity" $person -}}
+  <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
