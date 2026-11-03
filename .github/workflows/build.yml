@@ -112,6 +112,16 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-hugo-resources-
 
+    - name: Prepare gallery images
+      run: |
+        mkdir -p static/photos
+        cp 'Foto de Pedro.jpg' static/photos/algebra-school-2026.jpg
+        sudo apt-get update -qq
+        sudo apt-get install -y --no-install-recommends libheif-examples
+        heif-convert -q 85 '20260105_162422.heic' 'static/photos/masters-defense-2026.jpg'
+        test -s static/photos/algebra-school-2026.jpg
+        test -s static/photos/masters-defense-2026.jpg
+
     - name: Build with Hugo
       env:
         HUGO_ENVIRONMENT: production
@@ -129,6 +139,9 @@ jobs:
         grep -q 'P. CUSINATO' public/index.html
         grep -q 'editorial.css' public/index.html
         grep -q 'id=experience\|id="experience"' public/index.html
+        grep -q 'id=photos\|id="photos"' public/index.html
+        test -s public/photos/algebra-school-2026.jpg
+        test -s public/photos/masters-defense-2026.jpg
 
     - name: Generate Pagefind search index (if applicable)
       run: |
