@@ -47,15 +47,20 @@ sections:
         exclude_featured: false
     design:
       view: citation
-  - block: collection
+  - block: markdown
     id: talks
     content:
-      title: Recent & Upcoming Talks
-      filters:
-        folders:
-          - events
+      title: Talks
+      text: |-
+        **Four-dimensional analytic pro-p groups** — Algebra Seminar, University of Brasília (UnB), July 27, 2025, 2:30 PM. *Talk in English.* [Seminar announcement](https://mat.unb.br/index.php/outras-noticias/993-seminario-de-algebra-27-07-2025).
+
+        **Grupos analíticos pro-p de dimensão quatro** — 35th Brazilian Mathematics Colloquium (IMPA), poster presentation, July 31, 2025, 11:40 AM. *Poster in Portuguese.*
+
+        **On commensurations of pro-C groups** — Algebra Seminar, University of Brasília (UnB), May 8, 2026, 2:30 PM. *Talk in English.*
+
+        **On commensurations of pro-C groups** — 27th Brazilian Algebra Meeting, July 2, 2026, 3:00 PM. *Talk in English.*
     design:
-      view: card
+      columns: '1'
   - block: collection
     id: news
     content:
