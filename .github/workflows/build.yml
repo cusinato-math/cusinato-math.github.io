@@ -116,9 +116,16 @@ jobs:
       run: |
         mkdir -p static/photos
         cp 'Foto de Pedro.jpg' static/photos/algebra-school-2026.jpg
-        sudo apt-get update -qq
-        sudo apt-get install -y --no-install-recommends libheif-examples
-        heif-convert -q 85 '20260105_162422.heic' 'static/photos/masters-defense-2026.jpg'
+        python -m pip install --user --disable-pip-version-check pillow pillow-heif
+        python - <<'PY'
+        from PIL import Image
+        from pillow_heif import register_heif_opener
+        register_heif_opener()
+        image = Image.open("20260105_162422.heic")
+        image = image.convert("RGB")
+        image.save("static/photos/masters-defense-2026.jpg", "JPEG", quality=87, optimize=True)
+        print("Converted defense photo:", image.size)
+        PY
         test -s static/photos/algebra-school-2026.jpg
         test -s static/photos/masters-defense-2026.jpg
 
