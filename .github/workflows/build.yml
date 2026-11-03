@@ -120,6 +120,13 @@ jobs:
         echo "Hugo Cache Dir: $(hugo config | grep cachedir)"
         hugo --minify
 
+    - name: Verify editorial homepage is rendered
+      run: |
+        test -f public/index.html
+        grep -q 'class="site-header"' public/index.html
+        grep -q 'css/editorial.css' public/index.html
+        grep -q 'id="experience"' public/index.html
+
     - name: Generate Pagefind search index (if applicable)
       run: |
         # Check if site uses Pagefind search
