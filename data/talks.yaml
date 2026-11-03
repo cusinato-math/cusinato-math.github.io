@@ -5,6 +5,8 @@
   format: Seminar talk
   language: English
   announcement: https://mat.unb.br/index.php/outras-noticias/993-seminario-de-algebra-27-07-2025
+  abstract: /uploads/abstract-2025-07-27.pdf
+  abstract_label: Abstract (Portuguese)
 
 - title: Grupos analíticos pro-p de dimensão quatro
   event: 35th Brazilian Mathematics Colloquium (IMPA)
@@ -18,6 +20,8 @@
   event: Algebra Seminar, University of Brasília (UnB)
   date: May 8, 2026
   time: 2:30 PM
+  abstract: /uploads/abstract-2026-05-08.pdf
+  abstract_label: Abstract
   format: Seminar talk
   language: English
 

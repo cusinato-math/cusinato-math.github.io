@@ -161,6 +161,11 @@
             {{- with $talk.announcement -}}
             <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Notice <span aria-hidden="true">↗</span></a>
             {{- end -}}
+            {{- with $talk.abstract -}}
+              {{- if fileExists (printf "static%s" .) -}}
+              <a href="{{ . | relURL }}" download>{{ $talk.abstract_label | default "Abstract" }} <span aria-hidden="true">↓</span></a>
+              {{- end -}}
+            {{- end -}}
             {{- with $talk.poster -}}
               {{- if fileExists (printf "static%s" .) -}}
               <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">Poster PDF <span aria-hidden="true">↗</span></a>
