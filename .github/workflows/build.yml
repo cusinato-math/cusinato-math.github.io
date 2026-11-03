@@ -150,6 +150,21 @@ jobs:
         test -s public/photos/algebra-school-2026.jpg
         test -s public/photos/masters-defense-2026.jpg
 
+    - name: Verify search engine metadata and indexing
+      run: |
+        test -f public/index.html
+        test -f public/sitemap.xml
+        test -f public/robots.txt
+        grep -q 'application/ld+json' public/index.html
+        grep -q 'schema.org' public/index.html
+        grep -q 'Pedro Cusinato' public/index.html
+        grep -q 'canonical' public/index.html
+        grep -q 'cusinato-math.github.io' public/sitemap.xml
+        grep -q 'Sitemap:' public/robots.txt
+        ! test -f public/blog/get-started/index.html
+        ! test -f public/projects/pandas/index.html
+        ! test -f public/slides/example/index.html
+
     - name: Generate Pagefind search index (if applicable)
       run: |
         # Check if site uses Pagefind search
